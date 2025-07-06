@@ -37,11 +37,13 @@ calGlobal <- calGlobal%>% pivot_longer(
   names_to = "t",
   values_to="temperature"
 )
+
 # Convertir en ts
 calGlobal.st <- ts(calGlobal$temperature, 
                    st = c(1856,1), 
                    end = c(2005,12),
                    fr = 12)
+
 # Obtener una ventana
 calGlobal.st <- window(calGlobal.st,
                        start = c(1901,1),
@@ -52,6 +54,7 @@ calGlobal.decom <- decompose(calGlobal.st)
 
 # Gráfico de la descomposición
 plot(calGlobal.decom)
+
 # ¿El componente aleatorio se ve aleatorio?
 
 # Extraer componente de tendencia y estacionalidad
