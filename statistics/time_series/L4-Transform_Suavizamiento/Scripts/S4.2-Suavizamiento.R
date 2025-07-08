@@ -17,7 +17,7 @@ plot(quejas.ts,
 
 # Ponemos otros parámetors en FALSE
 quejas.manual <- HoltWinters(quejas.ts,
-                             alpha = 0.1,
+                             alpha = 0.3,
                              beta = FALSE,
                              gamma = FALSE)
 
