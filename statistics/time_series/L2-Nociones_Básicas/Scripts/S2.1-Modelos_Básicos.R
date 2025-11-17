@@ -6,7 +6,7 @@ w <- rnorm(1000) # Normal estándar
 
 # Observar las gráficas de ruido blanco, ACF y PACF
 par(mfrow = c(2, 2)) # Función para dividir el visualizador de gráficos
-plot_wn <- plot(w,type = 'l', col = 'cornflowerblue', main='Ruido Blanco', xlab = 't', ylab='x_t')
+plot_wn <- plot(w, type = 'l', col = 'cornflowerblue', main='Ruido Blanco', xlab = 't', ylab='x_t')
 acf_wn <- acf(w, col = 'cornflowerblue', main='ACF Ruido Blanco')
 pacf_wn <- pacf(w, col = 'cornflowerblue', main='PACF Ruido Blanco', ylim = c(-1, 1))
 

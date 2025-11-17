@@ -18,7 +18,7 @@ getwd()
 #### OJO!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #### PONER AQUÍ ABAJO LA UBICACIÓN EN SU COMPUTADORA
 #### EN DONDE SE ENCUENTRA LA CARPETA DE ESTE SCRIPT
-setwd("C:/Users/emanu/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L0-Review/Review_Estadística/Scripts")
+setwd("C:/Users/EmanuelMejia/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L0-Review/Review_Estadística/Scripts")
 
 # Puede seleccionarse manualmente usando el Shortcut CTRL+SHIFT+H
 # Pero entonces se tendrá que hacer cada vez que se abra el archivo
@@ -102,7 +102,8 @@ reg_res_muer
 summary(reg_res_muer)
 
 # Gráfico de residuales usando ggplot!
-vino %>% ggplot(aes(x = vino$pred_muer, y = vino$res_muer)) + geom_point(alpha = 0.6, color = "#001F82") + 
+vino %>% ggplot(aes(x = vino$pred_muer, y = vino$res_muer)) + 
+  geom_point(alpha = 0.6, color = "#001F82") +
   labs(title = "Predicciones VS Residuales",
        subtitle = "Gráfico de dispersión",
        x = "Predicción Muertes",
@@ -112,17 +113,23 @@ vino %>% ggplot(aes(x = vino$pred_muer, y = vino$res_muer)) + geom_point(alpha =
     plot.title = element_text(color = "#0099F8",
                               size = 17,
                               face = "bold"),
-    plot.subtitle = element_text(color = "#969696", size = 13, face = "italic"),
+    plot.subtitle = element_text(color = "#969696", 
+                                 size = 13, 
+                                 face = "italic"),
     axis.title = element_text(color = "#969696",
                               size = 10,
                               face = "bold"),
-    axis.text = element_text(color = "#969696", size = 10),
+    axis.text = element_text(color = "#969696", 
+                             size = 10),
     axis.line = element_line(color = "#969696")
   )
 
 # Hagamos nuevamente el gráfico con la línea de regresión
-vino %>% ggplot(aes(x = vino$pred_muer, y = vino$res_muer)) + geom_point(alpha = 0.6, color = "#001F82") + 
-  geom_abline(intercept = coef(reg_res_muer)[1], slope = coef(reg_res_muer)[2], color = "#0099F8", size = 1.5)+
+vino %>% ggplot(aes(x = vino$pred_muer, y = vino$res_muer)) + 
+  geom_point(alpha = 0.6, color = "#001F82") + 
+  geom_abline(intercept = coef(reg_res_muer)[1], 
+              slope = coef(reg_res_muer)[2], 
+              color = "#0099F8", size = 1.5)+
   geom_text(
     label= vino$pais,
     nudge_x = 0, nudge_y = 15,
@@ -157,7 +164,11 @@ vino %>% ggplot(aes(x = vino$pred_muer, y = vino$res_muer)) + geom_point(alpha =
 
 # Regresión múltiple
 
-vino %>% ggplot(aes(x = vino$alcohol, y = vino$cardio)) + geom_point(alpha = 0.6, color = "#001F82") + 
+vino %>% ggplot(aes(x = vino$alcohol, y = vino$cardio)) + 
+  geom_point(alpha = 0.6, color = "#001F82") + 
+  geom_abline(intercept = coef(reg_base)[1], 
+              slope = coef(reg_base)[2], 
+              color = "#0099F8", size = 1.5) +
   labs(title = "Alcohol VS Muertes Cardio",
        subtitle = "Gráfico de dispersión",
        x = "Alcohol consumido en vino per cápita (L)",

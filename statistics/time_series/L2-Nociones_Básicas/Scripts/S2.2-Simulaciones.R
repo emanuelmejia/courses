@@ -4,26 +4,27 @@ set.seed(100)
 ### Simulaciones de Ruido Blanco
 
 # Función de creación de una serie de ruido blanco
-w <-function(rep=100){
-  w=rnorm(n=rep,mean=0,sd=1)
+w <- function(rep=100){
+  w = rnorm(n=rep,mean=0,sd=1)
   return(w)
 }
 
 # Crear un DF con índice que replique 100 veces la función
 sim_w <- data.frame(
-  t = seq(from=1,to=100,by=1),
-  replicate(w(),n=100))
+  t = seq(from=1,to=200,by=1),
+  replicate(w(200), n=100)
+  )
 
 # Convertir en DF de columna
-sim_w <- sim_w%>% pivot_longer(
+sim_w <- sim_w %>% pivot_longer(
   cols= starts_with("x"),
   names_to ="sim",
   values_to="value"
 )
 
 # Gráfica de las 100 simulaciones
-ggplot(sim_w,aes(x=t, y=value, col=sim))+
-  geom_line()+
+ggplot(sim_w, aes(x=t, y=value, col=sim)) +
+  geom_line() +
   labs(title = "Ruido Blanco",
        subtitle = "100 Simulaciones",
        x = "t",
@@ -50,7 +51,7 @@ ggplot(sim_w,aes(x=t, y=value, col=sim))+
 ### Simulaciones Caminata Aleatoria
 
 # Función de creación de una caminata aleatoria
-rw_no_drift<-function(rep=100){
+rw_no_drift <- function(rep=100){
   w = rnorm(rep,0,1)
   rwnd = cumsum(w)
   return(rwnd)
@@ -58,8 +59,8 @@ rw_no_drift<-function(rep=100){
 
 # Crear un DF con índice que replique 100 veces la función
 sim_rwnd <- data.frame(
-  t=seq(from=1, to=100,by=1),
-  replicate(rw_no_drift(),n=100)
+  t = seq(from=1, to=100, by=1),
+  replicate(rw_no_drift(), n=100)
   )
 
 # Convertir en DF de columna
@@ -93,7 +94,7 @@ ggplot(sim_rwnd,aes(x=t,y=value, col=sim))+
 # Simulaciones Caminata con Drift
 
 # Función de creación de una caminata aleatoria con drift
-rw_drift<-function(rep=100){
+rw_drift <- function(rep=100){
   w = rnorm(rep,0,1)
   wd = 0.3 + w
   rwd = cumsum(wd)

@@ -1,5 +1,5 @@
 # Poner el propio directorio
-setwd("C:/Users/emanu/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L1-Intro_TS/Scripts")
+setwd("C:/Users/EmanuelMejia/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L1-Intro_TS/Scripts")
 
 # Número de pasajeros por mes en una aerolinea
 pas <- AirPassengers

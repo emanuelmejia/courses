@@ -35,6 +35,7 @@ paste(v1,v2) # Regla de oro nuevamente, todo lo hace entrada por entrada!
 w1 <- 5 * c(2,3,5,10) ; w2 <- 3:6 # Otra forma de definir un vector es con un rango
 
 w1 + w2
+w1 * w2
 
 # Entradas de vectores ----------------------------------------------------
 
@@ -101,7 +102,7 @@ V
 
 ?matrix
 
-M <- matrix(1:4, nrow = 2, ncol = 2) # Especificar vector, n?mero de filas y n?mero de columnas.
+M <- matrix(1:4, nrow = 2, ncol = 2) # Especificar vector, número de filas y n?mero de columnas.
 M # Por default se rellena por columnas
 
 # Para rellenar por filas

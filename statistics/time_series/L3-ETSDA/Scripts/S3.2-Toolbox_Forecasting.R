@@ -2,7 +2,7 @@ library(tidyverse)
 library(forecast)
 
 # Ubicación de este cuaderno
-setwd("C:/Users/emanu/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L3-ETSDA/Scripts")
+setwd("C:/Users/EmanuelMejia/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L3-ETSDA/Scripts")
 
 # Leer los datos
 aus <- read.csv("../data/aus_production.csv")

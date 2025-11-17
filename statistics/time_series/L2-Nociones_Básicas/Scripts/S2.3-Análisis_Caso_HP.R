@@ -2,7 +2,7 @@ library(tidyverse)
 
 # Get working directory para saber en dónde estamos
 getwd()
-setwd("C:/Users/emanu/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L2-Nociones_Básicas/Scripts")
+setwd("C:/Users/EmanuelMejia/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L2-Nociones_Básicas/Scripts")
 
 hpStock <- read.table("../data/HP.txt", header = T)
 

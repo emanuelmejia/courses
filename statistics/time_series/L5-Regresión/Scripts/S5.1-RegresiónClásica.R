@@ -23,7 +23,7 @@ ggtema <- function(graf = NULL) {
 }
 
 # Directorio donde se encuentra este cuaderno
-setwd("C:/Users/emanu/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L5-Regresión/Scripts")
+setwd("C:/Users/EmanuelMejia/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L5-Regresión/Scripts")
 
 # Leer los datos
 aus <- read.csv("../data/aus_production.csv")
@@ -129,14 +129,31 @@ glance(reg_3) %>%
 glance(reg_4) %>%
   dplyr::select(r.squared, adj.r.squared, AIC, BIC)
 
-# ¿Hacemos algún cambio? Seleccionemos la regresión final que utilizaremos
-reg_final <- ### Código aquí!!!!!!!!!
+# ¿Hacemos algún cambio? Ajusta un modelo que te haga sentido
+reg_final <- tslm(Beer ~ Bricks + Cement,
+                  aus.train)
+summary(reg_final)
+  
+# Elabora un gráfico del modelo (similar a alguno de las líneas 74-105)
+plt_reg_final <- autoplot(aus.train[,"Beer"], series="Datos") +  
+  autolayer(fitted(reg_final), series="Ajuste") + 
+  labs(title = "Producción Trimestral de Cerveza",
+       subtitle = "Ajuste Regresión Lineal - Modelo Final",
+       y = "Megalitros", x = "Año") 
+plt_reg_final <- ggtema(plt_reg_final)
+plt_reg_final
 
+# Elabora un gráfico de análisis de residuales (similar a alguno de las líneas 114-117)
+checkresiduals(reg_final)
+  
+# Elabora un análisis de los criterios de bondad de ajuste (similar a alguno de las líneas 120-130)
+glance(reg_final) %>%
+  dplyr::select(r.squared, adj.r.squared, AIC, BIC)
+
+  
 # Predicciones con base en el modelo elegido
 predic <- forecast(reg_final, newdata = aus.test)
 predic
-
-
 
 # Gráfico final!
 plt_reg_final <- autoplot(aus.ts[,"Beer"], series="Datos", color = "darkturquoise", alpha = 0.7) +  
@@ -151,7 +168,7 @@ plt_reg_final
 ### TEMA APARTE!
 # ¿Y si lo vemos como una serie de tiempo?
 # Revisemos una regresión incluyendo componentes de ST
-reg_ts <- tslm(Beer ~ trend + season + Bricks, 
+reg_ts <- tslm(Beer ~ trend + season + Bricks + Cement, 
                   aus.train)
 summary(reg_ts)
 checkresiduals(reg_ts)

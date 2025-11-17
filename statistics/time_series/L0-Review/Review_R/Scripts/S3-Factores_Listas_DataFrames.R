@@ -66,12 +66,14 @@ summary(f_info)
 ?ordered
 o_info <- ordered(f_info, # Con este vector de factores
                   levels=c("Lento","Normal","Rápido","Toretto")) # Ordenando de menor a mayor.
+
+o_info
+
 o_info[4] < o_info[85]
 
 # Ordenar un objeto de menor a mayor
 sort(o_info) # Orden creciente
 sort(o_info,decreasing = TRUE) # Orden decreciente
-
 
 # Listas ------------------------------------------------------------------
 
@@ -85,7 +87,7 @@ L <- list(4,       # Primera entrada de la lista
 L
 
 # Mi objetivo es sumarle al '4' de la lista el número 5. 
-L + 4 # Esto no funciona
+L[1] + 4 # Esto no funciona
 
 class(L)
 
@@ -142,12 +144,13 @@ carrera
 genero
 
 library(dplyr)
+# Lo que quiero es que todos tienen la misma longitud.
+c(edades %>% length(),carrera %>% length(),genero %>% length()) %in% length(nombre)
+
 # Otro ejemplo... chafa.
 length(nombre) %in% c(edades %>% length(),
                       carrera %>% length(),
                       genero %>% length())
-# Lo que quiero es que todos tienen la misma longitud.
-c(edades %>% length(),carrera %>% length(),genero %>% length()) %in% length(nombre)
 
 df <- data.frame(Nombre = nombre,
                  Edad = edades,

@@ -1,4 +1,4 @@
-setwd("C:/Users/emanu/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L4-Transform_Suavizamiento/Scripts")
+setwd("C:/Users/EmanuelMejia/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L4-Transform_Suavizamiento/Scripts")
 
 # Cargar datos y convertir en ts
 motor <- read.table("../data/motororg.dat", header = T)
@@ -27,8 +27,8 @@ quejas.manual
 # Si removemos el valor de alpha
 # R lo calculará en automático
 quejas.auto <- HoltWinters(quejas.ts,
-                             beta = FALSE,
-                             gamma = FALSE)
+                           beta = FALSE,
+                           gamma = FALSE)
 
 quejas.auto
 
@@ -111,7 +111,7 @@ ts.plot(blanDulce,
         ylab = "Ventas (miles de Litros)",
         main = "Ventas de Vino Dulce Blanco")
 
-# Datos de pasajeros!!!
+# Datos de pasajeros!!! 
 pas <- AirPassengers
 pas.HW <- HoltWinters(pas, seasonal = "mult")
 

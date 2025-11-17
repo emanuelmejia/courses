@@ -1,3 +1,4 @@
+library(dplyr)
 # Estructuras de Control --------------------------------------------------
 
 # if, else, ifelse
@@ -14,7 +15,8 @@ if(x %% 2 == 0){
 
 # Ejemplo: if - else if - else
 
-x <- runif(1)
+x <- runif(1, min = -1, max = 1)
+x
 
 if(x<0){
   z = paste(x,"es negativo")
@@ -128,11 +130,10 @@ repeat{
 resultados
 
 # Forma vectorial
-
 apply(iris[,1:4],2,sum) # De iris, las columnas 1 a 4 hará la operación suma por columnas (el número 2 indica que es por columnas)
 
 # Función tapply
-tapply(iris$Sepal.Length,iris$Species,mean)
+tapply(iris$Sepal.Length, iris$Species, mean)
 
 # tapply puede usarse con diferentes funciones
 tapply(iris$Sepal.Length, # Toma este vector
@@ -212,6 +213,7 @@ r3 <- function(x){
   }
   
   stop("No te pases ¿Qué estás haciendo?")
+  paste(x, "te pasas")
 }
 
 r3("jejeje")

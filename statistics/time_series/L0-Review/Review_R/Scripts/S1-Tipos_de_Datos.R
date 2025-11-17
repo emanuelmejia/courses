@@ -48,7 +48,7 @@ log(0)
 # Logaritmos con otras bases
 log(125,5) # El segundo número es la base, default ln (base e)
 log(125,base = 5) # Otra opción es escribir también "base="
-log(base = 5,125) # Otra opción, si se especifica el argumento podemos ponerlo en desorden (las que no se especifiquen se toman en el orden de la función)
+log(base = 5, 125) # Otra opción, si se especifica el argumento podemos ponerlo en desorden (las que no se especifiquen se toman en el orden de la función)
 
 # Algunos tipos comunes de logaritmos tienen su propia función
 log10(100) #Logaritmo base 10
@@ -125,7 +125,7 @@ edad = 34
 paste(nombre_completo,"tiene",edad,"años.")
 
 # función para borrar la asignación que tiene un objeto
-rm(x) 
+rm(x)
 rm(oracion,f) # Puede borrarse más de un objeto
 
 # función para pasar todo a mayúsculas
@@ -254,3 +254,4 @@ sqrt(-4 + 0i)
 sqrt(as.complex(-4))
 
 ( 2 + 5i ) / ( 0 + 4i ) # Es necesario poner la parte entera y la parte imaginaria para que se hagan las operaciones, aunque estas sean 0
+

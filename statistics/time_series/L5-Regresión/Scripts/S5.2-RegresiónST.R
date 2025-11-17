@@ -26,7 +26,7 @@ ggtema <- function(graf = NULL) {
 }
 
 # Directorio donde se encuentra este cuaderno
-setwd("C:/Users/emanu/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L5-Regresión/Scripts")
+setwd("C:/Users/EmanuelMejia/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L5-Regresión/Scripts")
 
 # Leer datos
 pasUS <- read.csv("../data/pasajeros.csv")
@@ -89,7 +89,7 @@ grid.arrange(plotOrig,
 
 # Modelo tendencia lineal
 reg_lineal <- pas.tsib %>% 
-  model(trend_model = TSLM(Total~ trend()))
+  model(trend_model = TSLM(Total ~ trend()))
 reg_lineal %>% report()
 
 # Modelo tendencia cuadrática
@@ -120,7 +120,7 @@ plt_lineal <- augment(reg_lineal)%>%
 plt_lineal <- ggtema(plt_lineal)
 
 # Gráfica de predicciones con modelo tendencia cuadrática
-plt_cuad <-augment(reg_cuad)%>%
+plt_cuad <- augment(reg_cuad)%>%
   ggplot(aes(x = index)) +
   geom_line(aes(y = Total, colour = "Datos")) +
   geom_line(aes(y = .fitted, colour = "Ajuste"), alpha = 0.7) +

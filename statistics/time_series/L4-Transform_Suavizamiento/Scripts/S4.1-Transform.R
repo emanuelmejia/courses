@@ -1,7 +1,7 @@
 library(tidyverse)
 library(forecast)
 
-setwd("C:/Users/emanu/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L4-Transform_Suavizamiento/Scripts")
+setwd("C:/Users/EmanuelMejia/OneDrive - Firedrop/Github/Public/courses/statistics/time_series/L4-Transform_Suavizamiento/Scripts")
 
 ### Transformación por calendario
 
@@ -127,6 +127,9 @@ huevos.ts <- ts(
   huevos, 
   st = 1900) 
 
+#Creamos lambda
+lambda <- BoxCox.lambda(huevos)
+
 # Gráfico inicial
 plot(huevos.ts)
 
@@ -134,11 +137,15 @@ plot(huevos.ts)
 predbox <- rwf(huevos.ts, drift = TRUE, lambda = 0,
                h = 50)
 # Método drift con transformación boxcox
-predboxajust <- rwf(huevos.ts, drift = TRUE, lambda = 0,
+predboxajust <- rwf(huevos.ts, drift = TRUE, lambda = lambda,
+                    h = 50)
+# Método drift con transformación boxcox ajuste sesgo
+predboxajustbias <- rwf(huevos.ts, drift = TRUE, lambda = lambda,
                h = 50, biasadj = TRUE)
 
 # Viendo resultados de ambos pronósticos
 autoplot(huevos.ts) +
-  autolayer(predbox, series = "Predicción usando ln")+
-  autolayer(predboxajust, series = "Ajuste por sesgo", PI = FALSE) +
+  autolayer(predbox, series = "Predicción usando ln", PI = FALSE)+
+  autolayer(predboxajust, series = "Predicción usando BoxCox(lambda)", PI = FALSE)+
+  autolayer(predboxajustbias, series = "Ajuste por sesgo", PI = FALSE) +
   guides(colour = guide_legend(title = "Método"))
